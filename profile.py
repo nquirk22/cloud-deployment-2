@@ -17,7 +17,7 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
  
 # Add four XenVMs to the request.
-link = request.LAN("lan")
+global link = request.LAN("lan")
 
 for i in range(1, 5):
     node = request.XenVM("node-" + str(i))
