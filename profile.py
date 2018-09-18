@@ -31,12 +31,12 @@ for i in range(1, 5):
     iface.addAddress(rspec.IPv4Address("192.168.1." + str(i), "255.255.255.0"))        
     link.addInterface(iface)
     
-    # Install and execute a script that is contained in the repository.
-    node.addService(rspec.Execute(shell="sh", command="/local/repository/silly.sh"))
 
     # if node-1, give it a public interface
     if i == 1:
         node.routable_control_ip = True
+        # install and run Apache server on public-facing machine
+        node.addService(rspec.Execute(shell="sh", command="/local/repository/silly.sh"))
         
 
 # Print the RSpec to the enclosing page.
