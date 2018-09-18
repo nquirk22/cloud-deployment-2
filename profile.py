@@ -8,7 +8,7 @@ Wait for the profile instance to start, then click on the node in the topology a
 # Import the Portal object.
 import geni.portal as portal
 # Import the ProtoGENI library.
-import geni.rspec.pg as pg
+import geni.rspec.pg as rspec
 
 # Create a portal context.
 pc = portal.Context()
@@ -18,6 +18,7 @@ request = pc.makeRequestRSpec()
  
 # Add four XenVMs to the request.
 
+link = request.LAN("lan")
 
 for i in range(1, 5):
     node = request.XenVM("node-" + str(i))
@@ -25,7 +26,7 @@ for i in range(1, 5):
     iface = node.addInterface("if" + str(i))
     iface.component_id = "eth" + str(i)
     iface.addAddress(rspec.IPv4Address("192.168.1." + str(i), "255.255.255.0"))        
-    #link.addInterface(iface)
+    link.addInterface(iface)
 
     if i == 1:
         node.routable_control_ip = True
