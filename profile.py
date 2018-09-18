@@ -17,7 +17,7 @@ pc = portal.Context()
 request = pc.makeRequestRSpec()
  
 # Add four XenVMs to the request.
-global link = request.LAN("lan")
+
 
 for i in range(1, 5):
     node = request.XenVM("node-" + str(i))
@@ -25,7 +25,7 @@ for i in range(1, 5):
     iface = node.addInterface("if" + str(i))
     iface.component_id = "eth" + str(i)
     iface.addAddress(rspec.IPv4Address("192.168.1." + str(i), "255.255.255.0")        
-    link.addInterface(iface)
+    #link.addInterface(iface)
 
     if i == 1:
         node.routable_control_ip = True
