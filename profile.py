@@ -24,7 +24,7 @@ for i in range(1, 5):
     node.disk_image = "urn:publicid:IDN+emulab.net+image+emulab-ops:CENTOS7-64-STD"
     iface = node.addInterface("if" + str(i))
     iface.component_id = "eth" + str(i)
-    iface.addAddress(rspec.IPv4Address("192.168.1." + str(i), "255.255.255.0")        
+    iface.addAddress(rspec.IPv4Address("192.168.1." + str(i), "255.255.255.0"))        
     #link.addInterface(iface)
 
     if i == 1:
